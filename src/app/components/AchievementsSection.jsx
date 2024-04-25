@@ -41,7 +41,7 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="mt-5">
-      <br /><br /><br /><br /><br />
+      <br />
     <div className="py-8 px-4 xl:gap-1 sm:py-16 xl:px-1 mt-12 flex flex-col items-center justify-center">
       <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
       <h2 className="text-4xl font-bold text-white mb-4 items-center flex flex-row justify-center">About Me</h2>
@@ -57,14 +57,14 @@ const AboutSection = () => {
     </div>
     <section className="text-white" id="skills">
       <br />
-      <br /><br /><br /><br /><br />
     <div className="py-8 px-4 xl:gap-1 sm:py-16 xl:px-1 mt-12 flex flex-col items-center justify-center">
       <div className= "mt-4 md:mt-0 text-left flex flex-col h-full">
       <h2 className="text-5xl font-bold text-white mb-4 items-center flex flex-row justify-center">Skills</h2>
+      <div>
   {achievementsList.map((achievement, index) => (
-    <div className="flex flex-col items-center text-center" key={index}>
-      <h2 className="text-white text-4xl font-bold mb-4">{achievement.value}</h2>
-      <ul className="text-[#ADB7BE]">
+    <div className="mb-8 w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700" key={index}>
+      <h2 className="text-4xl font-bold text-[#a855f7] mb-4 items-center flex flex-col justify-center">{achievement.value}</h2>
+      <ul className="text-white">
         {achievement.metric.map((skill, skillIndex) => (
           <li key={skillIndex} className="flex items-center">
             <svg
@@ -82,12 +82,13 @@ const AboutSection = () => {
       </ul>
     </div>
   ))}
+  </div>
       </div>
     </div>
     </section>
     
     <section className="mt-10" id="education">
-      <br /><br /><br />  
+      <br />
     <div className="py-8 px-4 xl:gap-1 sm:py-16 xl:px-1 mt-12 flex flex-col items-center justify-center" >
       <div className="mt-4 md:mt-0 text-left flex flex-col h-full ">
       <h2 className="text-5xl font-bold text-white mb-4 items-center flex flex-row justify-center">Education</h2>
