@@ -1,83 +1,50 @@
 "use client";
-import React from "react";
-import dynamic from "next/dynamic";
+import React, { useTransition, useState } from "react";
 import TabButton from "./TabButton";
-
-const AnimatedNumbers = dynamic(
-  () => {
-    return import("react-animated-numbers");
-  },
-  { ssr: false }
-);
 
 const achievementsList = [
   {
-    metric: "Projects",
-    value: "100",
-    postfix: "+",
+    metric: ["React", "Redux",
+    "Bootstrap",
+    "Tailwind",
+    "Html",
+    "Css"],
+    value: "FRONTEND",
   },
   {
-    prefix: "~",
-    metric: "Users",
-    value: "100,000",
+    metric: [ "Node.js",
+      "Express"],
+    value: "BACKEND",
   },
   {
-    metric: "Awards",
-    value: "7",
+    metric: ["MongoDB"
+      ,"MySQL"],
+    value: "DATABASE",
   },
   {
-    metric: "Years",
-    value: "5",
+    metric: ["GitHub",
+    "Jenkins",
+    "Docker"],
+    value: "DEV-OPS",
   },
 ];
 
-const AchievementsSection = () => {
+const AboutSection = () => {
+  const [tab, setTab] = useState("skills");
+  const [isPending, startTransition] = useTransition();
+
+  const handleTabChange = (id) => {
+    startTransition(() => {
+      setTab(id);
+    });
+  };
+
   return (
-    <div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-      <div className="sm:border-[#33353F] sm:border rounded-md py-8 px-16 flex flex-col sm:flex-row items-center justify-between">
-        {achievementsList.map((achievement, index) => {
-          return (
-            <div
-              key={index}
-              className="flex flex-col items-center justify-center mx-4 my-4 sm:my-0"
-            >
-              <h2 className="text-white text-4xl font-bold flex flex-row">
-                {achievement.prefix}
-                <AnimatedNumbers
-                  includeComma
-                  animateToNumber={parseInt(achievement.value)}
-                  locale="en-US"
-                  className="text-white text-4xl font-bold"
-                  configs={(_, index) => {
-                    return {
-                      mass: 1,
-                      friction: 100,
-                      tensions: 140 * (index + 1),
-                    };
-                  }}
-                />
-                {achievement.postfix}
-              </h2>
-              <p className="text-[#ADB7BE] text-base">{achievement.metric}</p>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-export default AchievementsSection;
-
-
-
-
-
-<div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-<section className="text-white" id="about">
-  <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-    <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
-      <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
+    <section id="about" className="mt-5">
+      <br /><br /><br /><br /><br />
+    <div className="py-8 px-4 xl:gap-1 sm:py-16 xl:px-1 mt-12 flex flex-col items-center justify-center">
+      <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
+      <h2 className="text-4xl font-bold text-white mb-4 items-center flex flex-row justify-center">About Me</h2>
       <p className="text-base lg:text-lg">
         I am a full stack web developer with a passion for creating
         interactive and responsive web applications. I have experience
@@ -86,48 +53,63 @@ export default AchievementsSection;
         looking to expand my knowledge and skill set. I am a team player and
         I am excited to work with others to create amazing applications.
       </p>
-  </div>    
-
-<div class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-<div class="flex items-center justify-between mb-0">
-</div>
-<div class="flow-root">
-  <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-        <li class="py-3 sm:py-4">
-            <div class="flex items-center">
-            </div>
-        </li>
-    </ul>
-        
-</div>
-
-      <div className="flex flex-row justify-center mt-8">
-        <TabButton
-          selectTab={() => handleTabChange("skills")}
-          active={tab === "skills"}
-        >
-          {" "}
-          Skills{" "}
-        </TabButton>
-        <TabButton
-          selectTab={() => handleTabChange("education")}
-          active={tab === "education"}
-        >
-          {" "}
-          Education{" "}
-        </TabButton>
-        <TabButton
-          selectTab={() => handleTabChange("certifications")}
-          active={tab === "certifications"}
-        >
-          {" "}
-          Certifications{" "}
-        </TabButton>
-      </div>
-      <div className="mt-8">
-        {TAB_DATA.find((t) => t.id === tab).content}
       </div>
     </div>
-  </div>
-</section>
-</div>
+    <section className="text-white" id="skills">
+      <br />
+      <br /><br /><br /><br /><br />
+    <div className="py-8 px-4 xl:gap-1 sm:py-16 xl:px-1 mt-12 flex flex-col items-center justify-center">
+      <div className= "mt-4 md:mt-0 text-left flex flex-col h-full">
+      <h2 className="text-5xl font-bold text-white mb-4 items-center flex flex-row justify-center">Skills</h2>
+  {achievementsList.map((achievement, index) => (
+    <div className="flex flex-col items-center text-center" key={index}>
+      <h2 className="text-white text-4xl font-bold mb-4">{achievement.value}</h2>
+      <ul className="text-[#ADB7BE]">
+        {achievement.metric.map((skill, skillIndex) => (
+          <li key={skillIndex} className="flex items-center">
+            <svg
+              className="w-3.5 h-3.5 me-2 text-green-500 dark:text-green-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z"/>
+            </svg>
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+      </div>
+    </div>
+    </section>
+    
+    <section className="mt-10" id="education">
+      <br /><br /><br />  
+    <div className="py-8 px-4 xl:gap-1 sm:py-16 xl:px-1 mt-12 flex flex-col items-center justify-center" >
+      <div className="mt-4 md:mt-0 text-left flex flex-col h-full ">
+      <h2 className="text-5xl font-bold text-white mb-4 items-center flex flex-row justify-center">Education</h2>
+        <h3 className="text-4xl ">East West College Of Engineering (C.S.E)</h3>
+        <p className="text-2xl">2020 - Present</p>
+        <br />
+        <h6 className="text-1xl">Cgpa: 7.6</h6>
+        <br />
+        <h3 className="text-4xl ">Kendriya Vidyalaya - No.1 Jalahalli (West)  12th</h3>
+        <p className="text-2xl">2019 - 2020</p>
+        <br />
+        <h6 className="text-1xl">Percentage: 71%</h6>
+        <br />
+        <h3 className="text-4xl ">Kendriya Vidyalaya - No.1 Jalahalli (West) 10th</h3>
+        <p className="text-2xl">2017 - 2018</p>
+        <br />
+        <h6 className="text-1xl">Percentage: 73%</h6>
+      </div>
+      </div>
+      </section>
+    </section>
+  );
+};
+
+export default AboutSection;
