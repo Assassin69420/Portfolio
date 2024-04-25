@@ -1,6 +1,5 @@
 "use client";
 import React, { useTransition, useState } from "react";
-import TabButton from "./TabButton";
 
 const achievementsList = [
   {
