@@ -42,8 +42,7 @@ const AboutSection = () => {
   return (
     <section id="about" className="mt-5">
       <br /><br /><br /><br /><br />
-    <div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16 mt-12 flex flex-col items-center justify-center">
-      <div className="sm:border-white sm:border rounded-md py-8 px-16 flex flex-col items-center justify-center">
+    <div className="py-8 px-4 xl:gap-1 sm:py-16 xl:px-1 mt-12 flex flex-col items-center justify-center">
       <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
       <h2 className="text-4xl font-bold text-white mb-4 items-center flex flex-row justify-center">About Me</h2>
       <p className="text-base lg:text-lg">
@@ -54,16 +53,14 @@ const AboutSection = () => {
         looking to expand my knowledge and skill set. I am a team player and
         I am excited to work with others to create amazing applications.
       </p>
-  </div>  
       </div>
     </div>
     <section className="text-white" id="skills">
       <br />
       <br /><br /><br /><br /><br />
-    <div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-      <div className="sm:border-white sm:border rounded-md py-8 px-16 ">
-      <h2 className="text-5xl font-bold text-white mb-4 items-center flex sm:flex-col">Skills</h2>
-      <div className="flex sm:flex-row items-start justify-between mt-6">
+    <div className="py-8 px-4 xl:gap-1 sm:py-16 xl:px-1 mt-12 flex flex-col items-center justify-center">
+      <div className= "mt-4 md:mt-0 text-left flex flex-col h-full">
+      <h2 className="text-5xl font-bold text-white mb-4 items-center flex flex-row justify-center">Skills</h2>
   {achievementsList.map((achievement, index) => (
     <div className="flex flex-col items-center text-center" key={index}>
       <h2 className="text-white text-4xl font-bold mb-4">{achievement.value}</h2>
@@ -85,17 +82,15 @@ const AboutSection = () => {
       </ul>
     </div>
   ))}
-</div>
       </div>
     </div>
     </section>
     
-    <div className="mt-10" id="education">
+    <section className="mt-10" id="education">
       <br /><br /><br />  
-    <div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16" >
-      <div className="sm:border-white sm:border rounded-md py-8 px-16 ">
-      <h2 className="text-5xl font-bold text-white mb-4 items-center flex sm:flex-col">Education</h2>
-      <div className="flex sm:flex-col items-start justify-between mt-6">
+    <div className="py-8 px-4 xl:gap-1 sm:py-16 xl:px-1 mt-12 flex flex-col items-center justify-center" >
+      <div className="mt-4 md:mt-0 text-left flex flex-col h-full ">
+      <h2 className="text-5xl font-bold text-white mb-4 items-center flex flex-row justify-center">Education</h2>
         <h3 className="text-4xl ">East West College Of Engineering (C.S.E)</h3>
         <p className="text-2xl">2020 - Present</p>
         <br />
@@ -112,8 +107,7 @@ const AboutSection = () => {
         <h6 className="text-1xl">Percentage: 73%</h6>
       </div>
       </div>
-      </div>
-      </div>
+      </section>
     </section>
   );
 };
