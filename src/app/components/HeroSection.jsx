@@ -34,7 +34,7 @@ const HeroSection = () => {
               repeat={Infinity}
             />
           </h1>
-          <Image src={URL("/images/BaatCheet.png")} height={300} width={300} alt="My Picture"/>
+          <Image src="/images/BaatCheet.png" height={300} width={300} alt="My Picture"/>
           <div>
             <Link
               href="/#contact"
